@@ -48,7 +48,13 @@ const Hero = () => {
                     transition={{ duration: 0.5, delay: 0.2 }}
                     className="hero-visual"
                 >
-                    <div className="abstract-shape"></div>
+                    <div className="tech-orb">
+                        <div className="orb-ring ring-1"></div>
+                        <div className="orb-ring ring-2"></div>
+                        <div className="orb-ring ring-3"></div>
+                        <div className="orb-core"></div>
+                        <div className="orb-glow"></div>
+                    </div>
                 </motion.div>
             </div>
         </section>
