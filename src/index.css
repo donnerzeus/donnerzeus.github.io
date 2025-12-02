@@ -1,21 +1,26 @@
 :root {
-  --bg-primary: #0f172a; /* Slate 900 */
-  --bg-secondary: #1e293b; /* Slate 800 */
-  --text-primary: #f8fafc; /* Slate 50 */
-  --text-secondary: #94a3b8; /* Slate 400 */
-  --accent: #38bdf8; /* Sky 400 */
+  --bg-primary: #0f172a;
+  /* Slate 900 */
+  --bg-secondary: #1e293b;
+  /* Slate 800 */
+  --text-primary: #f8fafc;
+  /* Slate 50 */
+  --text-secondary: #94a3b8;
+  /* Slate 400 */
+  --accent: #38bdf8;
+  /* Sky 400 */
   --accent-glow: rgba(56, 189, 248, 0.5);
-  
+
   --font-main: 'Inter', system-ui, -apple-system, sans-serif;
-  
+
   font-family: var(--font-main);
   line-height: 1.6;
   font-weight: 400;
-  
+
   color-scheme: dark;
   color: var(--text-primary);
   background-color: var(--bg-primary);
-  
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -45,7 +50,12 @@ a:hover {
   color: #7dd3fc;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   line-height: 1.2;
   font-weight: 700;
   color: var(--text-primary);
@@ -95,11 +105,11 @@ button:hover {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1.5rem;
 }
 
 .section {
-  padding: 5rem 0;
+  padding: 3rem 0;
 }
 
 .text-gradient {
@@ -107,4 +117,14 @@ button:hover {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 2rem;
+  }
+
+  .section {
+    padding: 5rem 0;
+  }
 }

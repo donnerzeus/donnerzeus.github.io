@@ -23,7 +23,7 @@ const Hero = () => {
 
                     <div className="hero-actions">
                         <a href="#contact" className="btn btn-primary">Get in Touch</a>
-                        <a href="/cv.pdf" className="btn btn-outline" target="_blank" rel="noopener noreferrer">
+                        <a href="./cv.pdf" className="btn btn-outline" target="_blank" rel="noopener noreferrer">
                             <FileText size={20} />
                             Download CV
                         </a>
