@@ -36,7 +36,7 @@ const Hero = () => {
                         <a href={`mailto:${personalInfo.email}`} aria-label="Email">
                             <Mail size={24} />
                         </a>
-                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <a href="https://github.com/donnerzeus" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                             <Github size={24} />
                         </a>
                     </div>

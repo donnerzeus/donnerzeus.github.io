@@ -47,7 +47,7 @@ const Contact = () => {
                             <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer">
                                 <Linkedin size={32} />
                             </a>
-                            <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                            <a href="https://github.com/donnerzeus" target="_blank" rel="noopener noreferrer">
                                 <Github size={32} />
                             </a>
                         </div>

@@ -1,10 +1,23 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Calendar, Clock, ArrowRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Calendar, Clock, ArrowRight, X } from 'lucide-react';
 import { blogPosts } from '../data';
 import './Blog.css';
 
 const Blog = () => {
+    const [selectedPost, setSelectedPost] = useState(null);
+
+    const handlePostClick = (post, e) => {
+        e.preventDefault();
+        setSelectedPost(post);
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    };
+
+    const handleCloseModal = () => {
+        setSelectedPost(null);
+        document.body.style.overflow = 'unset'; // Restore scrolling
+    };
+
     return (
         <section id="blog" className="section blog-section">
             <div className="container">
@@ -26,6 +39,7 @@ const Blog = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
+                            onClick={(e) => handlePostClick(post, e)}
                         >
                             <div className="blog-content">
                                 <div className="blog-meta">
@@ -38,7 +52,7 @@ const Blog = () => {
                                 </div>
 
                                 <h3 className="blog-title">
-                                    <a href={post.link}>{post.title}</a>
+                                    <a href={post.link} onClick={(e) => handlePostClick(post, e)}>{post.title}</a>
                                 </h3>
 
                                 <p className="blog-excerpt">{post.excerpt}</p>
@@ -49,15 +63,57 @@ const Blog = () => {
                                             <span key={i} className="blog-tag">#{tag}</span>
                                         ))}
                                     </div>
-                                    <a href={post.link} className="read-more">
+                                    <button className="read-more-btn">
                                         Read More <ArrowRight size={16} />
-                                    </a>
+                                    </button>
                                 </div>
                             </div>
                         </motion.article>
                     ))}
                 </div>
             </div>
+
+            <AnimatePresence>
+                {selectedPost && (
+                    <div className="blog-modal-overlay" onClick={handleCloseModal}>
+                        <motion.div
+                            className="blog-modal"
+                            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <button className="close-modal-btn" onClick={handleCloseModal}>
+                                <X size={24} />
+                            </button>
+
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <div className="blog-meta">
+                                        <span className="blog-date">
+                                            <Calendar size={14} /> {selectedPost.date}
+                                        </span>
+                                        <span className="blog-read-time">
+                                            <Clock size={14} /> {selectedPost.readTime}
+                                        </span>
+                                    </div>
+                                    <h2>{selectedPost.title}</h2>
+                                    <div className="blog-tags">
+                                        {selectedPost.tags.map((tag, i) => (
+                                            <span key={i} className="blog-tag">#{tag}</span>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <div
+                                    className="modal-body"
+                                    dangerouslySetInnerHTML={{ __html: selectedPost.content }}
+                                />
+                            </div>
+                        </motion.div>
+                    </div>
+                )}
+            </AnimatePresence>
         </section>
     );
 };
