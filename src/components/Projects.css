@@ -54,3 +54,18 @@
     line-height: 1.6;
     flex-grow: 1;
 }
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.tech-tag {
+    font-size: 0.85rem;
+    color: var(--accent);
+    background: rgba(56, 189, 248, 0.1); /* Sky 400 with opacity */
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+}

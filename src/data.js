@@ -90,12 +90,29 @@ export const keyContributions = [
 
 export const projects = [
     {
+        title: "Jira SLA Alert Extension",
+        description: "A Chrome extension for monitoring Jira SLA breaches with real-time alerts, advanced filtering, and audible notifications for internal support teams.",
+        tech: ["Chrome Extension", "JavaScript", "Jira API"]
+    },
+    {
+        title: "Secret Threat",
+        description: "A real-time cooperative card game featuring dynamic atmospheric effects, interactive tutorials, and AI-powered bot players.",
+        tech: ["React", "Firebase", "Real-time"]
+    },
+    {
+        title: "Laravel Jira Analytics Portal",
+        description: "An advanced dashboard for Jira metrics offering AI-powered predictive analytics, gamified team leaderboards, and automated reporting.",
+        tech: ["Laravel", "PHP", "AI", "Analytics"]
+    },
+    {
         title: "Data Mining Project",
-        description: "Performance prediction for NFL players using data mining techniques."
+        description: "Performance prediction for NFL players using data mining techniques.",
+        tech: ["Python", "Data Mining"]
     },
     {
         title: "Z’Vote",
-        description: "Interactive iOS/Android news portal for weekly election results."
+        description: "Interactive iOS/Android news portal for weekly election results.",
+        tech: ["iOS", "Android", "Mobile"]
     }
 ];
 
@@ -124,4 +141,54 @@ export const references = [
     { name: "Erva Nur Demirci", role: "Frontend Developer, Gratas Solutions", email: "dmrcerva@gmail.com" },
     { name: "Osman S. Karaman", role: "Digital Preservation Manager, Sabancı Holding", email: "osmanserhat@gmail.com" },
     { name: "Yasin Keçeci", role: "Senior Consultant, KoçSistem", email: "php.yasinkececi@gmail.com" }
+];
+
+export const techStack = [
+    { name: "PHP", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" },
+    { name: "Laravel", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" },
+    { name: "Symfony", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/symfony/symfony-original.svg" },
+    { name: "Drupal", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/drupal/drupal-original.svg" },
+    { name: "JavaScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+    { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+    { name: "Vue.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" },
+    { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+    { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
+    { name: "Git", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
+    { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
+    { name: "Linux", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" }
+];
+
+export const blogPosts = [
+    {
+        title: "Optimizing Laravel Performance for High-Scale Apps",
+        excerpt: "Discover advanced techniques for caching, database indexing, and queue management to keep your Laravel applications running smoothly under heavy load.",
+        date: "Dec 12, 2024",
+        readTime: "5 min read",
+        tags: ["Laravel", "Performance", "PHP"],
+        link: "#"
+    },
+    {
+        title: "Building Real-Time Games with React & Firebase",
+        excerpt: "A deep dive into state synchronization, latency handling, and optimistic UI updates when building multiplayer card games like 'Secret Threat'.",
+        date: "Nov 28, 2024",
+        readTime: "8 min read",
+        tags: ["React", "Firebase", "GameDev"],
+        link: "#"
+    },
+    {
+        title: "Drupal 10 Migration: A Survival Guide",
+        excerpt: "Key strategies and common pitfalls to avoid when upgrading legacy Drupal sites to the latest version. Lessons learned from enterprise migrations.",
+        date: "Nov 15, 2024",
+        readTime: "6 min read",
+        tags: ["Drupal", "CMS", "Migration"],
+        link: "#"
+    },
+    {
+        title: "Dockerizing Your Dev Environment",
+        excerpt: "Stop saying 'it works on my machine'. How to set up a robust, reproducible development environment using Docker and Docker Compose.",
+        date: "Oct 30, 2024",
+        readTime: "4 min read",
+        tags: ["Docker", "DevOps", "DX"],
+        link: "#"
+    }
 ];

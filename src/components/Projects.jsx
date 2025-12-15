@@ -39,7 +39,9 @@ const Projects = () => {
                             <p className="project-description">{project.description}</p>
 
                             <div className="project-tech">
-                                {/* Tech stack could be added to data.js for each project */}
+                                {project.tech && project.tech.map((tech, i) => (
+                                    <span key={i} className="tech-tag">{tech}</span>
+                                ))}
                             </div>
                         </motion.div>
                     ))}
