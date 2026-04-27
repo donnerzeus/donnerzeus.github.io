@@ -7,9 +7,9 @@
 .contact-info,
 .references {
   padding: 1.5rem;
-  border: 1px solid rgba(27, 44, 36, 0.12);
+  border: 1px solid var(--surface-border);
   border-radius: var(--radius-lg);
-  background: rgba(255, 252, 247, 0.66);
+  background: linear-gradient(180deg, var(--panel-bg), rgba(7, 14, 25, 0.9));
   box-shadow: var(--shadow-soft);
 }
 
@@ -30,9 +30,9 @@
   gap: 0.75rem;
   min-height: 3.3rem;
   padding: 0.9rem 1rem;
-  border: 1px solid rgba(27, 44, 36, 0.08);
+  border: 1px solid rgba(98, 217, 255, 0.12);
   border-radius: var(--radius-md);
-  background: rgba(255, 252, 247, 0.74);
+  background: rgba(12, 24, 42, 0.82);
   color: var(--text-secondary);
 }
 
@@ -63,9 +63,9 @@
 
 .reference-card {
   padding: 1rem;
-  border: 1px solid rgba(27, 44, 36, 0.08);
+  border: 1px solid rgba(98, 217, 255, 0.12);
   border-radius: var(--radius-md);
-  background: rgba(255, 252, 247, 0.74);
+  background: rgba(12, 24, 42, 0.82);
 }
 
 .reference-card h4 {

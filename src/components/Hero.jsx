@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion as Motion } from 'framer-motion';
 import { ArrowUpRight, FileText, Github, Linkedin, Mail } from 'lucide-react';
-import { heroHighlights, heroStats, personalInfo } from '../data';
+import { heroHighlights, heroStats, personalInfo, terminalFeed } from '../data';
 import './Hero.css';
 
 const Hero = () => {
@@ -64,9 +64,22 @@ const Hero = () => {
                     className="hero-visual"
                 >
                     <div className="hero-panel">
-                        <div className="hero-panel-header">
-                            <span>Currently focused on</span>
-                            <strong>Modern PHP systems and platform reliability</strong>
+                        <div className="hero-panel-topbar">
+                            <div className="hero-panel-dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <span className="hero-panel-tab">runtime://portfolio.telemetry</span>
+                        </div>
+
+                        <div className="hero-terminal">
+                            {terminalFeed.map((item) => (
+                                <div key={item.label} className="terminal-row">
+                                    <span className="terminal-prompt">$ {item.label}</span>
+                                    <strong>{item.value}</strong>
+                                </div>
+                            ))}
                         </div>
 
                         <div className="hero-stat-grid">
@@ -79,8 +92,10 @@ const Hero = () => {
                         </div>
 
                         <div className="hero-panel-footer">
-                            <span>Based in</span>
-                            <strong>{personalInfo.location}</strong>
+                            <div>
+                                <span>Based in</span>
+                                <strong>{personalInfo.location}</strong>
+                            </div>
                             <p>{personalInfo.intro}</p>
                         </div>
                     </div>

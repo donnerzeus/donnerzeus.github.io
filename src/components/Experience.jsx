@@ -40,9 +40,8 @@ const Experience = () => {
                                             {job.period}
                                         </span>
                                     </div>
-                                    <p className="job-summary">{job.description}</p>
                                     <ul className="job-description">
-                                        {job.highlights.map((desc) => (
+                                        {job.description.map((desc) => (
                                             <li key={desc}>{desc}</li>
                                         ))}
                                     </ul>

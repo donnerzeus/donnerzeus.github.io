@@ -14,9 +14,9 @@
   display: flex;
   flex-direction: column;
   padding: 1.5rem;
-  border: 1px solid rgba(27, 44, 36, 0.12);
+  border: 1px solid var(--surface-border);
   border-radius: var(--radius-lg);
-  background: rgba(255, 252, 247, 0.66);
+  background: linear-gradient(180deg, var(--panel-bg), rgba(7, 14, 25, 0.9));
   box-shadow: var(--shadow-soft);
 }
 
@@ -89,9 +89,9 @@
 
 .tech-tag {
   padding: 0.68rem 0.85rem;
-  border: 1px solid rgba(27, 44, 36, 0.08);
+  border: 1px solid rgba(98, 217, 255, 0.12);
   border-radius: 999px;
-  background: rgba(255, 252, 247, 0.74);
+  background: rgba(12, 24, 42, 0.82);
   color: var(--text-secondary);
   font-size: 0.92rem;
 }

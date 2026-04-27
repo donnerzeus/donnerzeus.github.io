@@ -19,6 +19,13 @@ export const personalInfo = {
     intro: "Shipping reliable product and platform work across Laravel, Drupal, integrations, and delivery operations."
 };
 
+export const terminalFeed = [
+    { label: "primary_stack", value: "Laravel / Drupal / Enterprise integrations" },
+    { label: "delivery_mode", value: "Backend-first, production-safe, maintainable" },
+    { label: "platforms", value: "Corporate web, internal tools, reporting systems" },
+    { label: "ops_signal", value: "Docker, Linux CLI, CI awareness, debugging depth" }
+];
+
 export const heroStats = [
     { value: "50+", label: "corporate sites supported" },
     { value: "3", label: "major revamps delivered" },
@@ -88,33 +95,32 @@ export const experience = [
         company: "Sabancı University",
         role: "Software Development Specialist",
         period: "Feb 2023 - Present",
-        description: "Backend-heavy full-stack delivery across corporate university properties, internal integrations, and cross-team web platform work.",
-        highlights: [
-            "Developed, tested, and deployed Drupal features with strong cross-browser and production stability expectations.",
-            "Managed Google Analytics integrations for 50+ corporate sites in a multisite environment.",
-            "Led 3 website revamps and improved loading speed by roughly 40% on recent delivery work.",
-            "Worked across JavaScript, SCSS, PHP, Docker, and Ubuntu-based environments."
+        description: [
+            "Developed, tested, and deployed Drupal features; ensured cross-browser stability",
+            "Managed Google Analytics integrations for 50+ corporate sites",
+            "React Native mobile component development",
+            "Full-stack web development using JavaScript, HTML, SCSS, PHP",
+            "Actively used Docker and Ubuntu",
+            "Led revamp of 3 client websites, improving loading speed by 40%"
         ]
     },
     {
         company: "Login ERP Software",
         role: "Database Intern",
         period: "Feb 2022 - May 2022",
-        description: "Database support and operational maintenance in an ERP context.",
-        highlights: [
-            "Supported client-side server optimization and operational troubleshooting.",
-            "Worked on logical and physical database design decisions.",
-            "Handled monitoring and backup routines for safer data operations."
+        description: [
+            "Client-side server support and optimization",
+            "Logical/physical database design",
+            "DB performance monitoring and backup routines"
         ]
     },
     {
         company: "Sakıp Sabancı Museum",
         role: "Database Administration Intern",
         period: "Feb 2017 - Nov 2018",
-        description: "Early-stage data and CMS operations experience in a cultural institution environment.",
-        highlights: [
-            "Worked on restoration, normalization, and schema design tasks.",
-            "Supported Drupal management and content operations."
+        description: [
+            "Database restoration, normalization, schema design",
+            "Drupal management and content entry"
         ]
     }
 ];

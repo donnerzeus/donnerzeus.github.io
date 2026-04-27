@@ -1,16 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap');
 
 :root {
-  --bg-primary: #f4efe7;
-  --bg-elevated: rgba(255, 252, 247, 0.72);
-  --bg-strong: #fbf8f3;
-  --surface-border: rgba(27, 44, 36, 0.12);
-  --text-primary: #142019;
-  --text-secondary: #4c5a52;
-  --accent: #0f5f4d;
-  --accent-soft: #dce9e2;
-  --accent-strong: #b7632b;
-  --shadow-soft: 0 24px 60px rgba(25, 44, 36, 0.08);
+  --bg-primary: #07111f;
+  --bg-secondary: #0b1627;
+  --bg-tertiary: #0f1d31;
+  --bg-elevated: rgba(10, 21, 37, 0.82);
+  --bg-strong: rgba(14, 26, 46, 0.94);
+  --panel-bg: rgba(9, 18, 33, 0.78);
+  --panel-bg-strong: rgba(12, 24, 42, 0.94);
+  --panel-bg-soft: rgba(14, 26, 46, 0.66);
+  --surface-border: rgba(114, 138, 171, 0.18);
+  --surface-border-strong: rgba(108, 227, 255, 0.22);
+  --text-primary: #ecf5ff;
+  --text-secondary: #8ea6c3;
+  --accent: #62d9ff;
+  --accent-soft: rgba(98, 217, 255, 0.12);
+  --accent-strong: #36e6c2;
+  --warning: #ffb86a;
+  --shadow-soft: 0 30px 80px rgba(2, 8, 20, 0.42);
   --radius-lg: 28px;
   --radius-md: 18px;
   --radius-sm: 12px;
@@ -22,9 +29,9 @@
   font-weight: 400;
   color: var(--text-primary);
   background:
-    radial-gradient(circle at top left, rgba(15, 95, 77, 0.12), transparent 28%),
-    radial-gradient(circle at top right, rgba(183, 99, 43, 0.13), transparent 24%),
-    linear-gradient(180deg, #f8f3ea 0%, var(--bg-primary) 45%, #efe9df 100%);
+    radial-gradient(circle at top left, rgba(54, 230, 194, 0.1), transparent 24%),
+    radial-gradient(circle at top right, rgba(98, 217, 255, 0.12), transparent 26%),
+    linear-gradient(180deg, #08111d 0%, var(--bg-primary) 45%, #050c16 100%);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -50,10 +57,21 @@ body::before {
   position: fixed;
   inset: 0;
   background-image:
-    linear-gradient(rgba(15, 95, 77, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(15, 95, 77, 0.035) 1px, transparent 1px);
-  background-size: 56px 56px;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.32), transparent 82%);
+    linear-gradient(rgba(98, 217, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(98, 217, 255, 0.045) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.58), transparent 90%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(98, 217, 255, 0.04), transparent 18%, transparent 82%, rgba(54, 230, 194, 0.035)),
+    radial-gradient(circle at 20% 0%, rgba(98, 217, 255, 0.08), transparent 20%);
   pointer-events: none;
   z-index: 0;
 }
@@ -112,16 +130,16 @@ button:hover {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(20, 32, 25, 0.06);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(20, 32, 25, 0.24);
+  background: rgba(114, 138, 171, 0.32);
   border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(20, 32, 25, 0.36);
+  background: rgba(114, 138, 171, 0.48);
 }
 
 .container {
@@ -177,25 +195,39 @@ button:hover {
 }
 
 .btn-primary {
-  background: var(--text-primary);
-  color: #f9f6ef;
+  background: linear-gradient(135deg, rgba(98, 217, 255, 0.18), rgba(54, 230, 194, 0.18));
+  border-color: rgba(98, 217, 255, 0.22);
+  color: var(--text-primary);
   box-shadow: var(--shadow-soft);
 }
 
 .btn-primary:hover {
-  color: #f9f6ef;
-  background: #0f3027;
+  color: var(--text-primary);
+  background: linear-gradient(135deg, rgba(98, 217, 255, 0.28), rgba(54, 230, 194, 0.24));
 }
 
 .btn-outline {
   border-color: var(--surface-border);
-  background: rgba(255, 252, 247, 0.52);
+  background: rgba(13, 24, 42, 0.56);
   backdrop-filter: blur(16px);
 }
 
 .btn-outline:hover {
-  border-color: rgba(15, 95, 77, 0.24);
-  background: rgba(255, 252, 247, 0.86);
+  border-color: var(--surface-border-strong);
+  background: rgba(15, 30, 52, 0.8);
+}
+
+.section-shell {
+  position: relative;
+}
+
+.section-shell::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(98, 217, 255, 0.05);
+  border-radius: var(--radius-lg);
+  pointer-events: none;
 }
 
 @media (min-width: 768px) {
