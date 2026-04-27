@@ -181,6 +181,86 @@ export const projects = [
     }
 ];
 
+export const systemCapabilities = [
+    {
+        label: "CMS modernization",
+        score: "91",
+        detail: "Drupal architecture, module cleanup, upgrade planning, content-heavy delivery"
+    },
+    {
+        label: "Backend implementation",
+        score: "94",
+        detail: "Laravel and PHP application work with maintainable service boundaries"
+    },
+    {
+        label: "Integration design",
+        score: "89",
+        detail: "SSO, CRM, analytics, REST, SOAP, and data flow problem solving"
+    },
+    {
+        label: "Ops awareness",
+        score: "84",
+        detail: "Docker workflows, Linux-first debugging, CI and environment consistency"
+    }
+];
+
+export const integrationSurfaces = [
+    "Azure EntraID / SAML / OAuth2",
+    "Drupal multisite ecosystems",
+    "Laravel reporting and analytics",
+    "Google Analytics rollout at scale",
+    "Jira operational tooling",
+    "Relational database design and maintenance"
+];
+
+export const caseStudies = [
+    {
+        title: "Institutional multisite delivery",
+        context: "Corporate university sites with content-heavy publishing needs, legacy constraints, and production reliability expectations.",
+        problem: [
+            "Large content surfaces drift over time and become slow, fragile, and difficult to maintain.",
+            "Editors and stakeholders need delivery continuity while technical debt is being reduced."
+        ],
+        decisions: [
+            "Stabilized templates and frontend behavior before layering visible changes.",
+            "Focused on cross-browser safety and performance wins that would survive future iteration.",
+            "Kept implementation readable so the next engineer could extend it without reverse engineering."
+        ],
+        result: "Faster revamps, roughly 40% better loading speed on recent work, and cleaner ongoing ownership.",
+        stack: ["Drupal", "PHP", "SCSS", "JavaScript", "Performance"]
+    },
+    {
+        title: "Operational visibility tooling",
+        context: "Support and delivery teams needed faster reactions to SLA pressure and reporting blind spots.",
+        problem: [
+            "Critical operational data existed, but not in an interface that created action fast enough.",
+            "Without the right abstraction, internal tooling becomes noisy instead of useful."
+        ],
+        decisions: [
+            "Built focused dashboards and alerting flows around the actual operator workflow.",
+            "Preferred smaller, clear interfaces over oversized all-in-one admin surfaces.",
+            "Treated reporting as a backend design problem first, then shaped the UI around that."
+        ],
+        result: "Better visibility, faster reaction loops, and tooling that supports daily operations instead of interrupting them.",
+        stack: ["Laravel", "Jira API", "Analytics", "Chrome Extension", "Reporting UX"]
+    },
+    {
+        title: "Authentication and integration boundaries",
+        context: "Enterprise systems with SSO, APIs, and long-lived maintenance needs where reliability matters more than novelty.",
+        problem: [
+            "Identity and integration layers become failure points when boundaries are vague or implementation is inconsistent.",
+            "Legacy systems often require pragmatic bridges rather than idealized greenfield architecture."
+        ],
+        decisions: [
+            "Normalized authentication and integration flows around clearer interfaces and predictable behavior.",
+            "Worked with production constraints instead of forcing unnecessary abstraction.",
+            "Optimized for debuggability so incidents could be understood quickly."
+        ],
+        result: "Lower integration friction, clearer authentication behavior, and a safer maintenance path for future changes.",
+        stack: ["OAuth2", "SAML", "REST", "SOAP", "Relational Data"]
+    }
+];
+
 export const education = {
     degree: "Bachelor of Science in Computer Engineering",
     school: "Selçuk University",

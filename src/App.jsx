@@ -6,6 +6,7 @@ import Experience from './components/Experience';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import TechMarquee from './components/TechMarquee';
+import Systems from './components/Systems';
 import './App.css';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <About />
         <Skills />
         <TechMarquee />
+        <Systems />
         <Experience />
         <Projects />
         <Contact />

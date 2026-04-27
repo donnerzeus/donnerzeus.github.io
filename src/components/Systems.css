@@ -1,0 +1,110 @@
+.systems-intro {
+  max-width: 62ch;
+  margin-top: 1rem;
+  color: var(--text-secondary);
+}
+
+.systems-grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.capability-panel,
+.surface-panel {
+  padding: 1.5rem;
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, var(--panel-bg-strong), rgba(7, 14, 25, 0.92));
+  box-shadow: var(--shadow-soft);
+}
+
+.panel-header {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.panel-kicker {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.panel-header strong {
+  font-size: 1.2rem;
+  letter-spacing: -0.03em;
+}
+
+.capability-list {
+  display: grid;
+  gap: 0.9rem;
+  margin-top: 1.4rem;
+}
+
+.capability-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid rgba(98, 217, 255, 0.12);
+  border-radius: var(--radius-md);
+  background: rgba(6, 12, 22, 0.76);
+}
+
+.capability-meta span {
+  display: block;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.capability-meta p {
+  margin-top: 0.45rem;
+  color: var(--text-secondary);
+  font-size: 0.94rem;
+}
+
+.capability-row strong {
+  align-self: start;
+  color: var(--accent-strong);
+  font-family: var(--font-mono);
+  font-size: 1.3rem;
+}
+
+.surface-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+  margin-top: 1.4rem;
+}
+
+.surface-card {
+  min-height: 124px;
+  padding: 1rem;
+  border: 1px solid rgba(98, 217, 255, 0.12);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(180deg, rgba(12, 24, 42, 0.88), rgba(6, 12, 22, 0.84)),
+    linear-gradient(90deg, rgba(98, 217, 255, 0.04), transparent);
+}
+
+.surface-index {
+  color: rgba(98, 217, 255, 0.42);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+}
+
+.surface-card p {
+  margin-top: 1rem;
+  color: var(--text-primary);
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+@media (min-width: 980px) {
+  .systems-grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  }
+}

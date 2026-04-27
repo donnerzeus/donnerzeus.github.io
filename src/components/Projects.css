@@ -4,6 +4,118 @@
   color: var(--text-secondary);
 }
 
+.case-study-stack {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.case-study-card {
+  padding: 1.5rem;
+  border: 1px solid var(--surface-border-strong);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(180deg, rgba(12, 24, 42, 0.95), rgba(7, 14, 25, 0.92)),
+    linear-gradient(90deg, rgba(98, 217, 255, 0.05), transparent 35%, transparent 65%, rgba(54, 230, 194, 0.04));
+  box-shadow: var(--shadow-soft);
+}
+
+.case-study-top {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1rem;
+  align-items: center;
+}
+
+.case-study-index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid rgba(98, 217, 255, 0.14);
+  border-radius: 50%;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+}
+
+.case-study-top h3 {
+  font-size: 1.4rem;
+  letter-spacing: -0.04em;
+}
+
+.case-study-context {
+  max-width: 70ch;
+  margin-top: 1rem;
+  color: var(--text-secondary);
+}
+
+.case-study-columns {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.4rem;
+}
+
+.case-column {
+  padding: 1rem;
+  border: 1px solid rgba(98, 217, 255, 0.12);
+  border-radius: var(--radius-md);
+  background: rgba(6, 12, 22, 0.72);
+}
+
+.case-label {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.case-column ul {
+  display: grid;
+  gap: 0.7rem;
+  margin-top: 0.9rem;
+}
+
+.case-column li {
+  position: relative;
+  padding-left: 1rem;
+  color: var(--text-secondary);
+}
+
+.case-column li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.68rem;
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 50%;
+  background: var(--accent-strong);
+}
+
+.case-study-footer {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.4rem;
+}
+
+.case-study-footer p {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.projects-subsection {
+  margin-top: 3rem;
+}
+
+.projects-subtitle {
+  margin-top: 0.5rem;
+  font-size: 1.5rem;
+  letter-spacing: -0.04em;
+}
+
 .projects-grid {
   display: grid;
   gap: 1rem;
@@ -97,6 +209,10 @@
 }
 
 @media (min-width: 900px) {
+  .case-study-columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .projects-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
