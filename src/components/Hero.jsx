@@ -1,61 +1,90 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, FileText } from 'lucide-react';
-import { personalInfo } from '../data';
+import { motion as Motion } from 'framer-motion';
+import { ArrowUpRight, FileText, Github, Linkedin, Mail } from 'lucide-react';
+import { heroHighlights, heroStats, personalInfo } from '../data';
 import './Hero.css';
 
 const Hero = () => {
     return (
         <section className="hero-section">
             <div className="container hero-container">
-                <motion.div
+                <Motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                     className="hero-content"
                 >
-                    <h2 className="greeting">Hello, I'm</h2>
-                    <h1 className="name text-gradient">{personalInfo.name}</h1>
-                    <h3 className="title">{personalInfo.title}</h3>
-                    <p className="description">
-                        {personalInfo.summary}
-                    </p>
+                    <span className="hero-kicker">Backend-heavy delivery for real production systems</span>
+                    <h1 className="name">
+                        {personalInfo.name}
+                        <span className="text-gradient"> builds reliable web platforms.</span>
+                    </h1>
+                    <h2 className="title">{personalInfo.title}</h2>
+                    <p className="description">{personalInfo.summary}</p>
+
+                    <div className="hero-highlights">
+                        {heroHighlights.map((item) => (
+                            <span key={item} className="highlight-pill">{item}</span>
+                        ))}
+                    </div>
 
                     <div className="hero-actions">
-                        <a href="#contact" className="btn btn-primary">Get in Touch</a>
-                        <a href="./cv.pdf" className="btn btn-outline" target="_blank" rel="noopener noreferrer">
-                            <FileText size={20} />
-                            Download CV
+                        <a href="#contact" className="btn btn-primary">
+                            Let&apos;s talk
+                            <ArrowUpRight size={18} />
+                        </a>
+                        <a
+                            href={personalInfo.resumeUrl}
+                            className="btn btn-outline"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <FileText size={18} />
+                            View resume
                         </a>
                     </div>
 
                     <div className="social-links">
                         <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                            <Linkedin size={24} />
+                            <Linkedin size={22} />
                         </a>
                         <a href={`mailto:${personalInfo.email}`} aria-label="Email">
-                            <Mail size={24} />
+                            <Mail size={22} />
                         </a>
-                        <a href="https://github.com/donnerzeus" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                            <Github size={24} />
+                        <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                            <Github size={22} />
                         </a>
                     </div>
-                </motion.div>
+                </Motion.div>
 
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
+                <Motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
                     className="hero-visual"
                 >
-                    <div className="tech-orb">
-                        <div className="orb-ring ring-1"></div>
-                        <div className="orb-ring ring-2"></div>
-                        <div className="orb-ring ring-3"></div>
-                        <div className="orb-core"></div>
-                        <div className="orb-glow"></div>
+                    <div className="hero-panel">
+                        <div className="hero-panel-header">
+                            <span>Currently focused on</span>
+                            <strong>Modern PHP systems and platform reliability</strong>
+                        </div>
+
+                        <div className="hero-stat-grid">
+                            {heroStats.map((item) => (
+                                <div key={item.label} className="hero-stat-card">
+                                    <strong>{item.value}</strong>
+                                    <span>{item.label}</span>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="hero-panel-footer">
+                            <span>Based in</span>
+                            <strong>{personalInfo.location}</strong>
+                            <p>{personalInfo.intro}</p>
+                        </div>
                     </div>
-                </motion.div>
+                </Motion.div>
             </div>
         </section>
     );

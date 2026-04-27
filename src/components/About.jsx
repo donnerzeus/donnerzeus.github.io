@@ -1,62 +1,86 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { CheckCircle2, User } from 'lucide-react';
-import { keyContributions, softSkills } from '../data';
+import { motion as Motion } from 'framer-motion';
+import { CheckCircle2 } from 'lucide-react';
+import { deliveryPrinciples, focusAreas, keyContributions } from '../data';
 import './About.css';
 
 const About = () => {
     return (
         <section id="about" className="section about-section">
             <div className="container">
-                <motion.div
+                <Motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
                 >
-                    <h2 className="section-title">About Me</h2>
+                    <div className="section-heading">
+                        <span className="section-eyebrow">Focus</span>
+                        <h2 className="section-title">Professional, low-noise delivery for systems that need to stay alive.</h2>
+                        <p className="section-intro">
+                            I work best where backend reliability, integration complexity, and maintainability matter more than hype.
+                        </p>
+                    </div>
 
-                    <div className="about-grid">
+                    <div className="focus-grid">
+                        {focusAreas.map((item, index) => (
+                            <Motion.article
+                                key={item.title}
+                                className="focus-card"
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.08 }}
+                            >
+                                <h3>{item.title}</h3>
+                                <p>{item.description}</p>
+                            </Motion.article>
+                        ))}
+                    </div>
+
+                    <div className="about-columns">
                         <div className="contributions">
                             <h3 className="subsection-title">
-                                <CheckCircle2 className="icon" /> Key Contributions
+                                <CheckCircle2 className="icon" />
+                                Recent contribution themes
                             </h3>
                             <ul className="contributions-list">
                                 {keyContributions.map((item, index) => (
-                                    <motion.li
-                                        key={index}
+                                    <Motion.li
+                                        key={item}
                                         initial={{ opacity: 0, x: -20 }}
                                         whileInView={{ opacity: 1, x: 0 }}
                                         viewport={{ once: true }}
-                                        transition={{ delay: index * 0.1 }}
+                                        transition={{ delay: index * 0.05 }}
                                     >
                                         {item}
-                                    </motion.li>
+                                    </Motion.li>
                                 ))}
                             </ul>
                         </div>
 
                         <div className="soft-skills">
                             <h3 className="subsection-title">
-                                <User className="icon" /> Soft Skills
+                                <CheckCircle2 className="icon" />
+                                Working principles
                             </h3>
                             <div className="skills-tags">
-                                {softSkills.map((skill, index) => (
-                                    <motion.span
-                                        key={index}
+                                {deliveryPrinciples.map((item, index) => (
+                                    <Motion.span
+                                        key={item}
                                         className="skill-tag"
-                                        initial={{ opacity: 0, scale: 0.8 }}
+                                        initial={{ opacity: 0, scale: 0.9 }}
                                         whileInView={{ opacity: 1, scale: 1 }}
                                         viewport={{ once: true }}
                                         transition={{ delay: index * 0.05 }}
                                     >
-                                        {skill}
-                                    </motion.span>
+                                        {item}
+                                    </Motion.span>
                                 ))}
                             </div>
                         </div>
                     </div>
-                </motion.div>
+                </Motion.div>
             </div>
         </section>
     );

@@ -1,5 +1,9 @@
-/* App specific styles if needed */
 .app {
   width: 100%;
   min-height: 100vh;
+}
+
+.site-shell {
+  position: relative;
+  z-index: 1;
 }

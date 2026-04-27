@@ -1,31 +1,31 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Linkedin, Github } from 'lucide-react';
-import { personalInfo, references } from '../data';
+import { motion as Motion } from 'framer-motion';
+import { FileText, Github, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
+import { collaborationPoints, footerLinks, personalInfo } from '../data';
 import './Contact.css';
 
 const Contact = () => {
     return (
         <section id="contact" className="section contact-section">
             <div className="container">
-                <motion.h2
+                <Motion.h2
                     className="section-title"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                 >
-                    Get In Touch
-                </motion.h2>
+                    Contact
+                </Motion.h2>
 
                 <div className="contact-content">
-                    <motion.div
+                    <Motion.div
                         className="contact-info"
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                     >
                         <p className="contact-text">
-                            I am currently open to new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+                            If you need a pragmatic engineer for Laravel, Drupal, migrations, or messy integration work, reach out with context and I can assess fit quickly.
                         </p>
 
                         <div className="contact-details">
@@ -43,38 +43,65 @@ const Contact = () => {
                             </div>
                         </div>
 
-                        <div className="social-links large">
-                            <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer">
-                                <Linkedin size={32} />
+                        <div className="contact-actions">
+                            <a
+                                href={personalInfo.resumeUrl}
+                                className="btn btn-primary"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <FileText size={18} />
+                                Resume
                             </a>
-                            <a href="https://github.com/donnerzeus" target="_blank" rel="noopener noreferrer">
-                                <Github size={32} />
+                            <a
+                                href={personalInfo.linkedin}
+                                className="btn btn-outline"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <Linkedin size={18} />
+                                LinkedIn
                             </a>
                         </div>
-                    </motion.div>
 
-                    <motion.div
+                        <div className="social-links large">
+                            <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                                <Linkedin size={28} />
+                            </a>
+                            <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                                <Github size={28} />
+                            </a>
+                        </div>
+                    </Motion.div>
+
+                    <Motion.div
                         className="references"
                         initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
                     >
-                        <h3>References</h3>
+                        <h3>Best fit collaborations</h3>
                         <div className="references-list">
-                            {references.map((ref, index) => (
-                                <div key={index} className="reference-card">
-                                    <h4>{ref.name}</h4>
-                                    <p className="ref-role">{ref.role}</p>
-                                    <a href={`mailto:${ref.email}`} className="ref-email">{ref.email}</a>
+                            {collaborationPoints.map((item) => (
+                                <div key={item} className="reference-card">
+                                    <h4>{item}</h4>
+                                    <p className="ref-role">Clear scope, realistic constraints, production-ready output.</p>
                                 </div>
                             ))}
                         </div>
-                    </motion.div>
+                    </Motion.div>
                 </div>
 
                 <footer className="footer">
-                    <p>Designed & Built by {personalInfo.name}</p>
+                    <p>Designed and built by {personalInfo.name}</p>
+                    <div className="footer-links">
+                        {footerLinks.map((item) => (
+                            <a key={item.label} href={item.href} target="_blank" rel="noopener noreferrer">
+                                {item.label}
+                            </a>
+                        ))}
+                    </div>
                 </footer>
             </div>
         </section>

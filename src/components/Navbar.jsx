@@ -1,7 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, Code2 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
+import { AnimatePresence, motion as Motion } from 'framer-motion';
+import { Code2, Menu, X } from 'lucide-react';
+import { personalInfo } from '../data';
 import './Navbar.css';
+
+const navLinks = [
+    { name: 'Focus', href: '#about' },
+    { name: 'Stack', href: '#skills' },
+    { name: 'Experience', href: '#experience' },
+    { name: 'Work', href: '#projects' },
+    { name: 'Contact', href: '#contact' },
+];
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -9,59 +18,53 @@ const Navbar = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            setScrolled(window.scrollY > 50);
+            setScrolled(window.scrollY > 24);
         };
+
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const navLinks = [
-        { name: 'About', href: '#about' },
-        { name: 'Skills', href: '#skills' },
-        { name: 'Experience', href: '#experience' },
-        { name: 'Projects', href: '#projects' },
-        { name: 'Blog', href: '#blog' },
-        { name: 'Contact', href: '#contact' },
-    ];
-
     return (
         <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
             <div className="container navbar-container">
-                <a href="#" className="logo">
-                    <Code2 size={32} />
-                    <span>Barış.dev</span>
+                <a href="#" className="logo" aria-label="Go to top">
+                    <Code2 size={24} />
+                    <span>Baris.dev</span>
                 </a>
 
-                {/* Desktop Menu */}
                 <div className="desktop-menu">
                     {navLinks.map((link) => (
-                        <a
-                            key={link.name}
-                            href={link.href}
-                            className="nav-link"
-                        >
+                        <a key={link.name} href={link.href} className="nav-link">
                             {link.name}
                         </a>
                     ))}
+                    <a
+                        href={personalInfo.resumeUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="nav-cta"
+                    >
+                        Resume
+                    </a>
                 </div>
 
-                {/* Mobile Menu Button */}
                 <button
                     className="mobile-menu-btn"
-                    onClick={() => setIsOpen(!isOpen)}
+                    onClick={() => setIsOpen((current) => !current)}
+                    aria-label={isOpen ? 'Close menu' : 'Open menu'}
                 >
-                    {isOpen ? <X size={28} /> : <Menu size={28} />}
+                    {isOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
             </div>
 
-            {/* Mobile Menu Overlay */}
             <AnimatePresence>
                 {isOpen && (
-                    <motion.div
+                    <Motion.div
+                        className="mobile-menu"
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="mobile-menu"
                     >
                         <div className="container mobile-menu-container">
                             {navLinks.map((link) => (
@@ -74,8 +77,17 @@ const Navbar = () => {
                                     {link.name}
                                 </a>
                             ))}
+                            <a
+                                href={personalInfo.resumeUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="mobile-nav-link mobile-nav-link-cta"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                Resume
+                            </a>
                         </div>
-                    </motion.div>
+                    </Motion.div>
                 )}
             </AnimatePresence>
         </nav>

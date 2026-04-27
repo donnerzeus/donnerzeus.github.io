@@ -1,108 +1,165 @@
-.experience-section {
-    background-color: var(--bg-primary);
+.experience-layout {
+  display: grid;
+  gap: 1.25rem;
 }
 
 .timeline {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-    padding-left: 2rem;
+  position: relative;
+  display: grid;
+  gap: 1rem;
+  margin-top: 2rem;
 }
 
 .timeline::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 2px;
-    background: var(--bg-secondary);
+  content: '';
+  position: absolute;
+  left: 0.48rem;
+  top: 0.6rem;
+  bottom: 0.6rem;
+  width: 1px;
+  background: rgba(27, 44, 36, 0.18);
 }
 
 .timeline-item {
-    position: relative;
-    margin-bottom: 3rem;
-}
-
-.timeline-item:last-child {
-    margin-bottom: 0;
+  position: relative;
+  padding-left: 1.8rem;
 }
 
 .timeline-dot {
-    position: absolute;
-    left: -2rem;
-    top: 0.5rem;
-    width: 16px;
-    height: 16px;
-    background: var(--accent);
-    border-radius: 50%;
-    transform: translateX(-50%);
-    box-shadow: 0 0 0 4px var(--bg-primary);
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  width: 1rem;
+  height: 1rem;
+  border: 3px solid var(--bg-primary);
+  border-radius: 50%;
+  background: var(--accent);
 }
 
-.education-dot {
-    background: #818cf8;
-}
-
-.timeline-content {
-    background: var(--bg-secondary);
-    padding: 2rem;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+.timeline-content,
+.sidebar-card {
+  padding: 1.5rem;
+  border: 1px solid rgba(27, 44, 36, 0.12);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 252, 247, 0.66);
+  box-shadow: var(--shadow-soft);
 }
 
 .job-header {
-    margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
 }
 
 .job-header h3 {
-    font-size: 1.25rem;
-    margin-bottom: 0.5rem;
-    color: var(--text-primary);
+  font-size: 1.2rem;
 }
 
 .company {
-    display: block;
-    font-size: 1.1rem;
-    color: var(--accent);
-    margin-bottom: 0.5rem;
-    font-weight: 500;
+  display: inline-block;
+  margin-top: 0.35rem;
+  color: var(--accent);
 }
 
 .period {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.9rem;
-    color: var(--text-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.job-summary {
+  margin-top: 1rem;
+  color: var(--text-secondary);
 }
 
 .job-description {
-    list-style: none;
-    padding: 0;
+  display: grid;
+  gap: 0.7rem;
+  margin-top: 1rem;
 }
 
 .job-description li {
-    position: relative;
-    padding-left: 1.5rem;
-    margin-bottom: 0.5rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
+  position: relative;
+  padding-left: 1rem;
+  color: var(--text-secondary);
 }
 
 .job-description li::before {
-    content: '•';
-    position: absolute;
-    left: 0;
-    color: var(--accent);
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.68rem;
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 50%;
+  background: var(--accent);
 }
 
-@media (max-width: 768px) {
-    .timeline {
-        padding-left: 1.5rem;
-    }
+.experience-sidebar {
+  display: grid;
+  gap: 1rem;
+}
 
-    .timeline-dot {
-        left: -1.5rem;
-    }
+.sidebar-label {
+  display: inline-flex;
+  margin-bottom: 0.9rem;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.sidebar-card p,
+.sidebar-meta,
+.sidebar-list li {
+  color: var(--text-secondary);
+}
+
+.sidebar-meta {
+  display: inline-block;
+  margin-top: 0.8rem;
+}
+
+.sidebar-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.sidebar-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.sidebar-tags span {
+  padding: 0.65rem 0.85rem;
+  border: 1px solid rgba(27, 44, 36, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 252, 247, 0.74);
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+}
+
+@media (min-width: 980px) {
+  .experience-layout {
+    grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.55fr);
+    align-items: start;
+  }
+
+  .job-header {
+    flex-direction: row;
+    align-items: start;
+    justify-content: space-between;
+  }
+
+  .experience-sidebar {
+    position: sticky;
+    top: 6rem;
+  }
 }

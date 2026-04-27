@@ -1,52 +1,34 @@
-import React, { useState } from 'react';
-import { ChevronDown, ChevronUp } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React from 'react';
+import { motion as Motion } from 'framer-motion';
 import { techStack } from '../data';
 import './TechMarquee.css';
 
 const TechMarquee = () => {
-    const [showAll, setShowAll] = useState(false);
-
     return (
-        <div className="tech-section-wrapper">
-            {!showAll ? (
-                <div className="tech-marquee-container">
-                    <div className="tech-marquee-track">
-                        {/* Duplicate the list to create seamless loop */}
-                        {[...techStack, ...techStack].map((tech, index) => (
-                            <div key={index} className="tech-item">
-                                <img src={tech.icon} alt={tech.name} className="tech-icon" />
-                                <span className="tech-name">{tech.name}</span>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            ) : (
-                <motion.div
-                    className="tech-grid-container container"
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
+        <section className="tech-section-wrapper section">
+            <div className="container">
+                <Motion.div
+                    className="tech-grid-container"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
                 >
+                    <div className="tech-copy">
+                        <span className="section-eyebrow">Toolkit</span>
+                        <h2>Preferred technologies for shipping and maintaining the work.</h2>
+                    </div>
+
                     <div className="tech-grid">
-                        {techStack.map((tech, index) => (
-                            <div key={index} className="tech-item-static">
+                        {techStack.map((tech) => (
+                            <div key={tech.name} className="tech-item-static">
                                 <img src={tech.icon} alt={tech.name} className="tech-icon" />
                                 <span className="tech-name">{tech.name}</span>
                             </div>
                         ))}
                     </div>
-                </motion.div>
-            )}
-
-            <button
-                className="tech-toggle-btn"
-                onClick={() => setShowAll(!showAll)}
-                aria-label={showAll ? "Show less" : "Show all technologies"}
-            >
-                {showAll ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
-            </button>
-        </div>
+                </Motion.div>
+            </div>
+        </section>
     );
 };
 

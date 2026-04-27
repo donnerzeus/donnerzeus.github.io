@@ -1,6 +1,6 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Folder, ExternalLink } from 'lucide-react';
+import { motion as Motion } from 'framer-motion';
+import { ArrowUpRight, Folder } from 'lucide-react';
 import { projects } from '../data';
 import './Projects.css';
 
@@ -8,42 +8,52 @@ const Projects = () => {
     return (
         <section id="projects" className="section projects-section">
             <div className="container">
-                <motion.h2
+                <Motion.h2
                     className="section-title"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                 >
-                    Featured Projects
-                </motion.h2>
+                    Selected work
+                </Motion.h2>
+                <p className="projects-intro">
+                    A mix of institutional delivery, operational tooling, and integration-focused backend work.
+                </p>
 
                 <div className="projects-grid">
                     {projects.map((project, index) => (
-                        <motion.div
-                            key={index}
+                        <Motion.article
+                            key={project.title}
                             className="project-card"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
+                            transition={{ delay: index * 0.08 }}
                         >
                             <div className="project-header">
-                                <Folder size={40} className="folder-icon" />
-                                <div className="project-links">
-                                    {/* Assuming links might be added later, currently just placeholder or if available */}
-                                    {/* <a href="#" target="_blank" rel="noopener noreferrer"><ExternalLink size={20} /></a> */}
-                                </div>
+                                <Folder size={34} className="folder-icon" />
+                                <span className="project-impact-tag">
+                                    <ArrowUpRight size={16} />
+                                    Impact
+                                </span>
                             </div>
 
                             <h3 className="project-title">{project.title}</h3>
+                            <p className="project-impact">{project.impact}</p>
                             <p className="project-description">{project.description}</p>
 
+                            <ul className="project-outcomes">
+                                {project.outcomes.map((outcome) => (
+                                    <li key={outcome}>{outcome}</li>
+                                ))}
+                            </ul>
+
                             <div className="project-tech">
-                                {project.tech && project.tech.map((tech, i) => (
-                                    <span key={i} className="tech-tag">{tech}</span>
+                                {project.tech.map((tech) => (
+                                    <span key={tech} className="tech-tag">{tech}</span>
                                 ))}
                             </div>
-                        </motion.div>
+                        </Motion.article>
                     ))}
                 </div>
             </div>
