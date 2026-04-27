@@ -1,5 +1,6 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import SignalLab from './components/SignalLab';
 import About from './components/About';
 import Skills from './components/Skills';
 import Experience from './components/Experience';
@@ -15,6 +16,7 @@ function App() {
       <Navbar />
       <main className="site-shell">
         <Hero />
+        <SignalLab />
         <About />
         <Skills />
         <TechMarquee />
