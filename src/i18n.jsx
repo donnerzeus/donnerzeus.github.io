@@ -7,8 +7,6 @@ const copy = {
     nav: { apps: 'Apps', about: 'About', skills: 'Skills', experience: 'Experience', contact: 'Contact', resume: 'Resume' },
     hero: {
       kicker: 'Full-stack engineer · Istanbul',
-      lead: 'I build useful software,',
-      accent: ' from operational systems to playful products.',
       apps: 'Explore my apps',
       resume: 'View resume',
       brief: 'In brief',
@@ -49,8 +47,6 @@ const copy = {
     nav: { apps: 'Uygulamalar', about: 'Hakkımda', skills: 'Yetkinlikler', experience: 'Deneyim', contact: 'İletişim', resume: 'Özgeçmiş' },
     hero: {
       kicker: 'Full-stack yazılım geliştirici · İstanbul',
-      lead: 'Fayda üreten yazılımlar geliştiriyorum;',
-      accent: ' operasyon sistemlerinden eğlenceli ürünlere.',
       apps: 'Uygulamalarımı keşfet',
       resume: 'Özgeçmişi görüntüle',
       brief: 'Kısaca',

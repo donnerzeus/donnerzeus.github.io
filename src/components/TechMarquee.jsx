@@ -1,48 +1,65 @@
-import React from 'react';
+import { useState } from 'react';
 import { motion as Motion } from 'framer-motion';
-import { projects, skills, techStack } from '../data';
+import { ChevronDown, ChevronUp } from 'lucide-react';
+import { techStack } from '../data';
+import { useLanguage } from '../i18n';
 import './TechMarquee.css';
 
 const TechMarquee = () => {
-    const metrics = [
-        { label: 'stack_items', value: techStack.length },
-        { label: 'skill_groups', value: skills.length },
-        { label: 'case_blocks', value: projects.length }
-    ];
+    const [showAll, setShowAll] = useState(false);
+    const { language } = useLanguage();
+    const label = showAll
+        ? (language === 'tr' ? 'Kayan görünüme dön' : 'Return to moving view')
+        : (language === 'tr' ? 'Tüm teknolojileri göster' : 'Show all technologies');
 
     return (
-        <section className="tech-section-wrapper section">
-            <div className="container">
+        <div className="tech-section-wrapper">
+            {!showAll ? (
                 <Motion.div
-                    className="tech-grid-container"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    key="marquee"
+                    className="tech-marquee-container"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
                 >
-                    <div className="tech-copy">
-                        <span className="section-eyebrow">Toolkit</span>
-                        <h2>Preferred technologies for shipping and maintaining the work.</h2>
-                        <div className="tech-metrics">
-                            {metrics.map((item) => (
-                                <div key={item.label} className="tech-metric-card">
-                                    <span>{item.label}</span>
-                                    <strong>{item.value}</strong>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    <div className="tech-grid">
-                        {techStack.map((tech) => (
-                            <div key={tech.name} className="tech-item-static">
-                                <img src={tech.icon} alt={tech.name} className="tech-icon" />
+                    <div className="tech-marquee-track">
+                        {[...techStack, ...techStack].map((tech, index) => (
+                            <div key={`${tech.name}-${index}`} className="tech-item">
+                                <img src={tech.icon} alt="" className="tech-icon" />
                                 <span className="tech-name">{tech.name}</span>
                             </div>
                         ))}
                     </div>
                 </Motion.div>
-            </div>
-        </section>
+            ) : (
+                <Motion.div
+                    id="tech-stack-grid"
+                    key="grid"
+                    className="tech-grid-container container"
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                >
+                    <div className="tech-grid">
+                        {techStack.map((tech) => (
+                            <div key={tech.name} className="tech-item-static">
+                                <img src={tech.icon} alt="" className="tech-icon" />
+                                <span className="tech-name">{tech.name}</span>
+                            </div>
+                        ))}
+                    </div>
+                </Motion.div>
+            )}
+
+            <button
+                type="button"
+                className="tech-toggle-btn"
+                onClick={() => setShowAll((current) => !current)}
+                aria-expanded={showAll}
+                aria-controls="tech-stack-grid"
+                aria-label={label}
+            >
+                {showAll ? <ChevronUp size={21} /> : <ChevronDown size={21} />}
+            </button>
+        </div>
     );
 };
 

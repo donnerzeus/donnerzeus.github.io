@@ -21,10 +21,7 @@ const Hero = () => {
                     className="hero-content"
                 >
                     <span className="hero-kicker">{t.hero.kicker}</span>
-                    <h1 className="name">
-                        {t.hero.lead}
-                        <span className="text-gradient">{t.hero.accent}</span>
-                    </h1>
+                    <h1 className="name">{info.name}</h1>
                     <h2 className="title">{info.title}</h2>
                     <p className="description">{info.summary}</p>
 

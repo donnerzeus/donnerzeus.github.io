@@ -3,6 +3,7 @@ import Hero from './components/Hero';
 import Apps from './components/Apps';
 import About from './components/About';
 import Skills from './components/Skills';
+import TechMarquee from './components/TechMarquee';
 import Experience from './components/Experience';
 import Contact from './components/Contact';
 import './App.css';
@@ -14,10 +15,11 @@ function App() {
       <Navbar />
       <main className="site-shell">
         <Hero />
-        <Apps />
         <About />
         <Skills />
+        <TechMarquee />
         <Experience />
+        <Apps />
         <Contact />
       </main>
     </div>

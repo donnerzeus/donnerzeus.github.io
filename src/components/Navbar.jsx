@@ -10,10 +10,10 @@ const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const { language, setLanguage, t } = useLanguage();
     const navLinks = [
-        { name: t.nav.apps, href: '#apps' },
         { name: t.nav.about, href: '#about' },
         { name: t.nav.skills, href: '#skills' },
         { name: t.nav.experience, href: '#experience' },
+        { name: t.nav.apps, href: '#apps' },
         { name: t.nav.contact, href: '#contact' },
     ];
 
