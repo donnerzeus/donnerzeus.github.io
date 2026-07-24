@@ -15,7 +15,7 @@ export const personalInfo = {
     github: "https://github.com/donnerzeus",
     linkedin: "https://www.linkedin.com/in/barisdelikaya",
     resumeUrl: "./cv.pdf",
-    summary: "I build maintainable web systems with a backend-heavy mindset. My strongest areas are Laravel, PHP, Drupal modernization, enterprise integrations, and shipping stable production work without drama.",
+    summary: "I build maintainable web systems with a backend-heavy mindset. My strongest areas are Laravel, PHP, Drupal modernization, and enterprise integrations; I also work with .NET and .NET Core.",
     intro: "Shipping reliable product and platform work across Laravel, Drupal, integrations, and delivery operations."
 };
 
@@ -30,12 +30,12 @@ export const heroStats = [
     { value: "50+", label: "corporate sites supported" },
     { value: "3", label: "major revamps delivered" },
     { value: "40%", label: "faster load time on recent revamps" },
-    { value: "7→10", label: "Drupal migration range" }
+    { value: "7→12", label: "Drupal migration range" }
 ];
 
 export const heroHighlights = [
     "Laravel and PHP delivery",
-    "Drupal 7 to 10 modernization",
+    "Drupal 7 to 12 modernization",
     "SSO, CRM, and API integrations",
     "Dev and production environment parity"
 ];
@@ -66,7 +66,7 @@ export const skills = [
     {
         category: "Backend Platforms",
         icon: Server,
-        items: ["PHP 7-8.3", "Laravel", "Symfony", "Drupal 7-10", "OOP", "SOLID", "REST APIs"]
+        items: ["PHP 7-8.3", "Laravel", "Symfony", "Drupal 7-12", ".NET", ".NET Core", "OOP", "SOLID", "REST APIs"]
     },
     {
         category: "Frontend Delivery",

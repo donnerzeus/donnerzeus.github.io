@@ -99,16 +99,16 @@ const turkishData = {
     github: 'https://github.com/donnerzeus',
     linkedin: 'https://www.linkedin.com/in/barisdelikaya',
     resumeUrl: './cv.pdf',
-    summary: 'Backend ağırlıklı bir yaklaşımla sürdürülebilir web sistemleri geliştiriyorum. Laravel, PHP, Drupal modernizasyonu, kurumsal entegrasyonlar ve sorunsuz canlıya çıkış en güçlü olduğum alanlar.',
+    summary: 'Backend ağırlıklı bir yaklaşımla sürdürülebilir web sistemleri geliştiriyorum. Laravel, PHP, Drupal modernizasyonu ve kurumsal entegrasyonlar en güçlü olduğum alanlar; ayrıca .NET ve .NET Core ile çalışıyorum.',
     intro: 'Laravel, Drupal, entegrasyonlar ve teslimat operasyonlarında güvenilir ürün ve platform çalışmaları geliştiriyorum.'
   },
   heroStats: [
     { value: '50+', label: 'destek verilen kurumsal site' },
     { value: '3', label: 'tamamlanan büyük yenileme' },
     { value: '%40', label: 'son yenilemelerde hız artışı' },
-    { value: '7→10', label: 'Drupal geçiş aralığı' }
+    { value: '7→12', label: 'Drupal geçiş aralığı' }
   ],
-  heroHighlights: ['Laravel ve PHP geliştirme', 'Drupal 7’den 10’a modernizasyon', 'SSO, CRM ve API entegrasyonları', 'Geliştirme ve canlı ortam uyumu'],
+  heroHighlights: ['Laravel ve PHP geliştirme', 'Drupal 7’den 12’ye modernizasyon', 'SSO, CRM ve API entegrasyonları', 'Geliştirme ve canlı ortam uyumu'],
   focusAreas: [
     { title: 'Kurumsal CMS modernizasyonu', description: 'Eski Drupal sistemleri, sürüm yükseltme planları, modül temizliği ve canlı sistem kararlılığını koruyan gerçekçi geçiş yolları.' },
     { title: 'Okunabilir kalan backend sistemleri', description: 'Devir sonrasında da sürdürülebilir kalan servis sınırları, net veri akışları ve entegrasyon ağırlıklı uygulama kodu.' },
