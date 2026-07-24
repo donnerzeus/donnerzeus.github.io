@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { AnimatePresence, motion as Motion } from 'framer-motion';
-import { Code2, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { personalInfo } from '../data';
+import { useLanguage } from '../i18n';
 import './Navbar.css';
-
-const navLinks = [
-    { name: 'Focus', href: '#about' },
-    { name: 'Stack', href: '#skills' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Work', href: '#projects' },
-    { name: 'Contact', href: '#contact' },
-];
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const { language, setLanguage, t } = useLanguage();
+    const navLinks = [
+        { name: t.nav.apps, href: '#apps' },
+        { name: t.nav.about, href: '#about' },
+        { name: t.nav.skills, href: '#skills' },
+        { name: t.nav.experience, href: '#experience' },
+        { name: t.nav.contact, href: '#contact' },
+    ];
 
     useEffect(() => {
         const handleScroll = () => {
@@ -29,8 +30,8 @@ const Navbar = () => {
         <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
             <div className="container navbar-container">
                 <a href="#" className="logo" aria-label="Go to top">
-                    <Code2 size={24} />
-                    <span>Baris.dev</span>
+                    <span className="logo-mark">BD</span>
+                    <span>Barış Delikaya</span>
                 </a>
 
                 <div className="desktop-menu">
@@ -39,13 +40,26 @@ const Navbar = () => {
                             {link.name}
                         </a>
                     ))}
+                    <div className="language-switch" aria-label="Language">
+                        {['tr', 'en'].map((item) => (
+                            <button
+                                type="button"
+                                key={item}
+                                className={language === item ? 'active' : ''}
+                                onClick={() => setLanguage(item)}
+                                aria-pressed={language === item}
+                            >
+                                {item.toUpperCase()}
+                            </button>
+                        ))}
+                    </div>
                     <a
                         href={personalInfo.resumeUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="nav-cta"
                     >
-                        Resume
+                        {t.nav.resume}
                     </a>
                 </div>
 
@@ -77,6 +91,19 @@ const Navbar = () => {
                                     {link.name}
                                 </a>
                             ))}
+                            <div className="language-switch mobile-language-switch" aria-label="Language">
+                                {['tr', 'en'].map((item) => (
+                                    <button
+                                        type="button"
+                                        key={item}
+                                        className={language === item ? 'active' : ''}
+                                        onClick={() => setLanguage(item)}
+                                        aria-pressed={language === item}
+                                    >
+                                        {item.toUpperCase()}
+                                    </button>
+                                ))}
+                            </div>
                             <a
                                 href={personalInfo.resumeUrl}
                                 target="_blank"
@@ -84,7 +111,7 @@ const Navbar = () => {
                                 className="mobile-nav-link mobile-nav-link-cta"
                                 onClick={() => setIsOpen(false)}
                             >
-                                Resume
+                                {t.nav.resume}
                             </a>
                         </div>
                     </Motion.div>

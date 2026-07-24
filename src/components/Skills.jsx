@@ -1,9 +1,14 @@
 import React from 'react';
 import { motion as Motion } from 'framer-motion';
 import { skills } from '../data';
+import { useLanguage } from '../i18n';
 import './Skills.css';
 
 const Skills = () => {
+    const { t, language, localize } = useLanguage();
+    const localizedSkills = localize('skills', []);
+    const skillGroups = skills.map((skill, index) => language === 'tr' ? { ...skill, ...localizedSkills[index] } : skill);
+
     return (
         <section id="skills" className="section skills-section">
             <div className="container">
@@ -13,14 +18,14 @@ const Skills = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                 >
-                    Core stack
+                    {t.skills.title}
                 </Motion.h2>
                 <p className="skills-intro">
-                    Strongest on PHP ecosystems and integration-heavy delivery, with enough frontend range to ship complete experiences when needed.
+                    {t.skills.intro}
                 </p>
 
                 <div className="skills-grid">
-                    {skills.map((category, index) => {
+                    {skillGroups.map((category, index) => {
                         const Icon = category.icon;
                         return (
                             <Motion.article

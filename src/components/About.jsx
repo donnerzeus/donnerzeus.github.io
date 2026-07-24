@@ -2,9 +2,15 @@ import React from 'react';
 import { motion as Motion } from 'framer-motion';
 import { CheckCircle2 } from 'lucide-react';
 import { deliveryPrinciples, focusAreas, keyContributions } from '../data';
+import { useLanguage } from '../i18n';
 import './About.css';
 
 const About = () => {
+    const { t, localize } = useLanguage();
+    const localizedFocus = localize('focusAreas', focusAreas);
+    const localizedContributions = localize('keyContributions', keyContributions);
+    const localizedPrinciples = localize('deliveryPrinciples', deliveryPrinciples);
+
     return (
         <section id="about" className="section about-section">
             <div className="container">
@@ -15,15 +21,15 @@ const About = () => {
                     transition={{ duration: 0.5 }}
                 >
                     <div className="section-heading">
-                        <span className="section-eyebrow">Focus</span>
-                        <h2 className="section-title">Professional, low-noise delivery for systems that need to stay alive.</h2>
+                        <span className="section-eyebrow">{t.about.eyebrow}</span>
+                        <h2 className="section-title">{t.about.title}</h2>
                         <p className="section-intro">
-                            I work best where backend reliability, integration complexity, and maintainability matter more than hype.
+                            {t.about.intro}
                         </p>
                     </div>
 
                     <div className="focus-grid">
-                        {focusAreas.map((item, index) => (
+                        {localizedFocus.map((item, index) => (
                             <Motion.article
                                 key={item.title}
                                 className="focus-card"
@@ -42,10 +48,10 @@ const About = () => {
                         <div className="contributions">
                             <h3 className="subsection-title">
                                 <CheckCircle2 className="icon" />
-                                Recent contribution themes
+                                {t.about.contributions}
                             </h3>
                             <ul className="contributions-list">
-                                {keyContributions.map((item, index) => (
+                                {localizedContributions.map((item, index) => (
                                     <Motion.li
                                         key={item}
                                         initial={{ opacity: 0, x: -20 }}
@@ -62,10 +68,10 @@ const About = () => {
                         <div className="soft-skills">
                             <h3 className="subsection-title">
                                 <CheckCircle2 className="icon" />
-                                Working principles
+                                {t.about.principles}
                             </h3>
                             <div className="skills-tags">
-                                {deliveryPrinciples.map((item, index) => (
+                                {localizedPrinciples.map((item, index) => (
                                     <Motion.span
                                         key={item}
                                         className="skill-tag"

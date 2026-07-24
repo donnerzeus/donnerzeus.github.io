@@ -2,9 +2,16 @@ import React from 'react';
 import { motion as Motion } from 'framer-motion';
 import { Calendar } from 'lucide-react';
 import { certifications, education, experience, workingStyle } from '../data';
+import { useLanguage } from '../i18n';
 import './Experience.css';
 
 const Experience = () => {
+    const { t, localize } = useLanguage();
+    const jobs = localize('experience', experience);
+    const localizedEducation = localize('education', education);
+    const localizedCertifications = localize('certifications', certifications);
+    const localizedWorkingStyle = localize('workingStyle', workingStyle);
+
     return (
         <section id="experience" className="section experience-section">
             <div className="container experience-layout">
@@ -15,11 +22,11 @@ const Experience = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                     >
-                        Experience and operating style
+                        {t.experience.title}
                     </Motion.h2>
 
                     <div className="timeline">
-                        {experience.map((job, index) => (
+                        {jobs.map((job, index) => (
                             <Motion.div
                                 key={job.company}
                                 className="timeline-item"
@@ -59,25 +66,25 @@ const Experience = () => {
                     transition={{ delay: 0.15 }}
                 >
                     <div className="sidebar-card">
-                        <span className="sidebar-label">Education</span>
-                        <h3>{education.degree}</h3>
-                        <p>{education.school}</p>
-                        <span className="sidebar-meta">{education.period}</span>
+                        <span className="sidebar-label">{t.experience.education}</span>
+                        <h3>{localizedEducation.degree}</h3>
+                        <p>{localizedEducation.school}</p>
+                        <span className="sidebar-meta">{localizedEducation.period}</span>
                     </div>
 
                     <div className="sidebar-card">
-                        <span className="sidebar-label">Certifications</span>
+                        <span className="sidebar-label">{t.experience.certifications}</span>
                         <ul className="sidebar-list">
-                            {certifications.map((item) => (
+                            {localizedCertifications.map((item) => (
                                 <li key={item}>{item}</li>
                             ))}
                         </ul>
                     </div>
 
                     <div className="sidebar-card">
-                        <span className="sidebar-label">Working style</span>
+                        <span className="sidebar-label">{t.experience.style}</span>
                         <div className="sidebar-tags">
-                            {workingStyle.map((item) => (
+                            {localizedWorkingStyle.map((item) => (
                                 <span key={item}>{item}</span>
                             ))}
                         </div>

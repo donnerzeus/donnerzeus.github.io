@@ -2,9 +2,14 @@ import React from 'react';
 import { motion as Motion } from 'framer-motion';
 import { FileText, Github, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
 import { collaborationPoints, footerLinks, personalInfo } from '../data';
+import { useLanguage } from '../i18n';
 import './Contact.css';
 
 const Contact = () => {
+    const { t, localize } = useLanguage();
+    const info = localize('personalInfo', personalInfo);
+    const collaborations = localize('collaborationPoints', collaborationPoints);
+
     return (
         <section id="contact" className="section contact-section">
             <div className="container">
@@ -14,7 +19,7 @@ const Contact = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                 >
-                    Contact
+                    {t.contact.title}
                 </Motion.h2>
 
                 <div className="contact-content">
@@ -25,36 +30,36 @@ const Contact = () => {
                         viewport={{ once: true }}
                     >
                         <p className="contact-text">
-                            If you need a pragmatic engineer for Laravel, Drupal, migrations, or messy integration work, reach out with context and I can assess fit quickly.
+                            {t.contact.intro}
                         </p>
 
                         <div className="contact-details">
-                            <a href={`mailto:${personalInfo.email}`} className="contact-item">
+                            <a href={`mailto:${info.email}`} className="contact-item">
                                 <Mail className="icon" />
-                                <span>{personalInfo.email}</span>
+                                <span>{info.email}</span>
                             </a>
-                            <a href={`tel:${personalInfo.phone}`} className="contact-item">
+                            <a href={`tel:${info.phone}`} className="contact-item">
                                 <Phone className="icon" />
-                                <span>{personalInfo.phone}</span>
+                                <span>{info.phone}</span>
                             </a>
                             <div className="contact-item">
                                 <MapPin className="icon" />
-                                <span>{personalInfo.location}</span>
+                                <span>{info.location}</span>
                             </div>
                         </div>
 
                         <div className="contact-actions">
                             <a
-                                href={personalInfo.resumeUrl}
+                                href={info.resumeUrl}
                                 className="btn btn-primary"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
                                 <FileText size={18} />
-                                Resume
+                                {t.contact.resume}
                             </a>
                             <a
-                                href={personalInfo.linkedin}
+                                href={info.linkedin}
                                 className="btn btn-outline"
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -65,10 +70,10 @@ const Contact = () => {
                         </div>
 
                         <div className="social-links large">
-                            <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <a href={info.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                                 <Linkedin size={28} />
                             </a>
-                            <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                            <a href={info.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                                 <Github size={28} />
                             </a>
                         </div>
@@ -81,12 +86,12 @@ const Contact = () => {
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
                     >
-                        <h3>Best fit collaborations</h3>
+                        <h3>{t.contact.fit}</h3>
                         <div className="references-list">
-                            {collaborationPoints.map((item) => (
+                            {collaborations.map((item) => (
                                 <div key={item} className="reference-card">
                                     <h4>{item}</h4>
-                                    <p className="ref-role">Clear scope, realistic constraints, production-ready output.</p>
+                                    <p className="ref-role">{t.contact.fitNote}</p>
                                 </div>
                             ))}
                         </div>
@@ -94,7 +99,7 @@ const Contact = () => {
                 </div>
 
                 <footer className="footer">
-                    <p>Designed and built by {personalInfo.name}</p>
+                    <p>{t.contact.built} · {info.name}</p>
                     <div className="footer-links">
                         {footerLinks.map((item) => (
                             <a key={item.label} href={item.href} target="_blank" rel="noopener noreferrer">

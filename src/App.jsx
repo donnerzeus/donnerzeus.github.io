@@ -1,14 +1,12 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import SignalLab from './components/SignalLab';
+import Apps from './components/Apps';
 import About from './components/About';
 import Skills from './components/Skills';
 import Experience from './components/Experience';
-import Projects from './components/Projects';
 import Contact from './components/Contact';
-import TechMarquee from './components/TechMarquee';
-import Systems from './components/Systems';
 import './App.css';
+import './light-theme.css';
 
 function App() {
   return (
@@ -16,13 +14,10 @@ function App() {
       <Navbar />
       <main className="site-shell">
         <Hero />
-        <SignalLab />
+        <Apps />
         <About />
         <Skills />
-        <TechMarquee />
-        <Systems />
         <Experience />
-        <Projects />
         <Contact />
       </main>
     </div>
