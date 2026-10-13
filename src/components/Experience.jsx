@@ -1,98 +1,59 @@
-import React from 'react';
-import { motion as Motion } from 'framer-motion';
-import { Calendar } from 'lucide-react';
-import { certifications, education, experience, workingStyle } from '../data';
-import { useLanguage } from '../i18n';
-import './Experience.css';
-
-const Experience = () => {
-    const { t, localize } = useLanguage();
-    const jobs = localize('experience', experience);
-    const localizedEducation = localize('education', education);
-    const localizedCertifications = localize('certifications', certifications);
-    const localizedWorkingStyle = localize('workingStyle', workingStyle);
-
-    return (
-        <section id="experience" className="section experience-section">
-            <div className="container experience-layout">
-                <div className="experience-main">
-                    <Motion.h2
-                        className="section-title"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                    >
-                        {t.experience.title}
-                    </Motion.h2>
-
-                    <div className="timeline">
-                        {jobs.map((job, index) => (
-                            <Motion.div
-                                key={job.company}
-                                className="timeline-item"
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.08 }}
-                            >
-                                <div className="timeline-dot"></div>
-                                <div className="timeline-content">
-                                    <div className="job-header">
-                                        <div>
-                                            <h3>{job.role}</h3>
-                                            <span className="company">{job.company}</span>
-                                        </div>
-                                        <span className="period">
-                                            <Calendar size={14} />
-                                            {job.period}
-                                        </span>
-                                    </div>
-                                    <ul className="job-description">
-                                        {job.description.map((desc) => (
-                                            <li key={desc}>{desc}</li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </Motion.div>
-                        ))}
-                    </div>
-                </div>
-
-                <Motion.aside
-                    className="experience-sidebar"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.15 }}
-                >
-                    <div className="sidebar-card">
-                        <span className="sidebar-label">{t.experience.education}</span>
-                        <h3>{localizedEducation.degree}</h3>
-                        <p>{localizedEducation.school}</p>
-                        <span className="sidebar-meta">{localizedEducation.period}</span>
-                    </div>
-
-                    <div className="sidebar-card">
-                        <span className="sidebar-label">{t.experience.certifications}</span>
-                        <ul className="sidebar-list">
-                            {localizedCertifications.map((item) => (
-                                <li key={item}>{item}</li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    <div className="sidebar-card">
-                        <span className="sidebar-label">{t.experience.style}</span>
-                        <div className="sidebar-tags">
-                            {localizedWorkingStyle.map((item) => (
-                                <span key={item}>{item}</span>
-                            ))}
-                        </div>
-                    </div>
-                </Motion.aside>
-            </div>
-        </section>
-    );
-};
-
-export default Experience;
+import { experience, education, certifications } from "../data";
+import { useLanguage } from "../i18n";
+export default function Experience() {
+  const { language, t, localize } = useLanguage();
+  const jobs = localize("experience", experience);
+  const school = localize("education", education);
+  const certificates = localize("certifications", certifications);
+  return (
+    <section className="section experience-section" id="experience">
+      <div className="section-heading">
+        <span className="section-index">
+          03 / {t.nav.experience.toLocaleUpperCase(language)}
+        </span>
+        <span className="eyebrow">
+          {language === "tr" ? "İŞ VE EĞİTİM GEÇMİŞİ" : "WORK & EDUCATION"}
+        </span>
+      </div>
+      <h2>
+        {language === "tr" ? "Çalıştığım" : "Where I’ve"}{" "}
+        <em>{language === "tr" ? "yerler." : "worked."}</em>
+      </h2>
+      <div className="experience-list">
+        {jobs.map((job, i) => (
+          <details className="experience-item" key={job.company} open={i === 0}>
+            <summary>
+              <span className="job-period">{job.period}</span>
+              <div>
+                <h3>{job.company}</h3>
+                <p>{job.role}</p>
+              </div>
+              <span className="expand-symbol" aria-hidden="true">
+                +
+              </span>
+            </summary>
+            <ul>
+              {job.description.map((line) => (
+                <li key={line}>{line}</li>
+              ))}
+            </ul>
+          </details>
+        ))}
+      </div>
+      <div className="education-grid">
+        <div>
+          <span className="eyebrow">{t.experience.education}</span>
+          <h3>{school.school}</h3>
+          <p>{school.degree}</p>
+          <span className="muted">{school.period}</span>
+        </div>
+        <div>
+          <span className="eyebrow">{t.experience.certifications}</span>
+          {certificates.map((item) => (
+            <p key={item}>{item}</p>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

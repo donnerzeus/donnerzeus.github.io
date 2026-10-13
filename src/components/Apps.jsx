@@ -1,108 +1,144 @@
-import React, { useState } from 'react';
-import { motion as Motion } from 'framer-motion';
-import { ArrowUpRight, Code2, ExternalLink, Gamepad2, Layers3, Radio } from 'lucide-react';
-import { productApps } from '../data';
-import { useLanguage } from '../i18n';
-import './Apps.css';
+import { useState } from "react";
+import {
+  ArrowUpRight,
+  Code2,
+  Activity,
+  Fingerprint,
+  Gamepad2,
+  Layers,
+  Orbit,
+} from "lucide-react";
+import { productApps } from "../data";
+import { useLanguage } from "../i18n";
 
-const Apps = () => {
-    const [activeFilter, setActiveFilter] = useState('all');
-    const { language, t, localize } = useLanguage();
-    const appTranslations = localize('productApps', []);
-    const apps = productApps.map((app, index) => language === 'tr' ? { ...app, ...appTranslations[index] } : app);
-    const filters = [
-        { id: 'all', label: t.apps.filters.all, icon: Layers3 },
-        { id: 'live', label: t.apps.filters.live, icon: Radio },
-        { id: 'game', label: t.apps.filters.game, icon: Gamepad2 },
-        { id: 'system', label: t.apps.filters.system, icon: Code2 }
-    ];
-    const visibleApps = activeFilter === 'all' ? apps : apps.filter((app) => app.type === activeFilter);
-
-    return (
-        <section id="apps" className="section apps-section">
-            <div className="container">
-                <div className="apps-heading">
-                    <div>
-                        <span className="section-eyebrow">{t.apps.eyebrow}</span>
-                        <Motion.h2
-                            className="section-title"
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                        >
-                            {t.apps.title}
-                        </Motion.h2>
-                        <p>
-                            {t.apps.intro}
-                        </p>
-                    </div>
-                    <a className="apps-github-link" href="https://github.com/donnerzeus?tab=repositories" target="_blank" rel="noreferrer">
-                        {t.apps.repositories} <ArrowUpRight size={17} />
-                    </a>
-                </div>
-
-                <div className="apps-filter" role="tablist" aria-label="Filter applications">
-                    {filters.map(({ id, label, icon }) => (
-                        <button
-                            key={id}
-                            type="button"
-                            role="tab"
-                            aria-selected={activeFilter === id}
-                            className={activeFilter === id ? 'active' : ''}
-                            onClick={() => setActiveFilter(id)}
-                        >
-                            {React.createElement(icon, { size: 16 })} {label}
-                            <span>{id === 'all' ? apps.length : apps.filter((app) => app.type === id).length}</span>
-                        </button>
-                    ))}
-                </div>
-
-                <Motion.div className="apps-grid" layout>
-                    {visibleApps.map((app, index) => (
-                        <Motion.article
-                            layout
-                            key={app.title}
-                            className={`app-card accent-${app.accent}`}
-                            initial={{ opacity: 0, y: 18 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: index * 0.04 }}
-                        >
-                            <div className="app-card-preview" aria-hidden="true">
-                                <div className="app-preview-top">
-                                    <span>{app.signal}</span>
-                                    <i></i>
-                                </div>
-                                <strong>{app.title.slice(0, 2).toUpperCase()}</strong>
-                                <div className="app-preview-lines"><span></span><span></span><span></span></div>
-                            </div>
-
-                            <div className="app-card-body">
-                                <div className="app-card-meta">
-                                    <span>{app.category}</span>
-                                    <span className="app-status"><i></i>{app.status}</span>
-                                </div>
-                                <h3>{app.title}</h3>
-                                <p>{app.description}</p>
-                                <div className="app-tech">
-                                    {app.tech.map((tech) => <span key={tech}>{tech}</span>)}
-                                </div>
-                                <div className="app-actions">
-                                    {app.liveUrl && (
-                                        <a href={app.liveUrl} target="_blank" rel="noreferrer">
-                                            {t.apps.open} <ExternalLink size={15} />
-                                        </a>
-                                    )}
-                                    <a href={app.repoUrl} target="_blank" rel="noreferrer" className="source-link">
-                                        {t.apps.source} <Code2 size={15} />
-                                    </a>
-                                </div>
-                            </div>
-                        </Motion.article>
-                    ))}
-                </Motion.div>
-            </div>
-        </section>
-    );
+const illustrations = {
+  Ritim: Activity,
+  "Döngü Planlayıcı": Orbit,
+  "Secret Threat": Fingerprint,
+  "Project Spartan": Activity,
+  "Donnerzeus Party": Gamepad2,
+  "Ploxiano Survivors": Gamepad2,
+  EVENTAS: Layers,
+  "Jira Analytics Portal": Activity,
+  "CRM Works": Code2,
 };
-
-export default Apps;
+function ProductArtwork({ app }) {
+  const Icon = illustrations[app.title];
+  return (
+    <div className={`product-art art-${app.accent}`} aria-hidden="true">
+      <span className="art-label">
+        {app.category} / {app.tech[0]}
+      </span>
+      <div className="product-shape">
+        <span className="shape-ring" />
+        <span className="shape-ring second-ring" />
+        <Icon strokeWidth={0.9} />
+      </div>
+      <strong>{app.title}</strong>
+      <span className="art-signal">
+        <i />
+        {app.signal}
+      </span>
+    </div>
+  );
+}
+export default function Apps() {
+  const [filter, setFilter] = useState("all");
+  const { language, t, localize } = useLanguage();
+  const translations = localize("productApps", []);
+  const apps = productApps.map((app, index) =>
+    language === "tr" ? { ...app, ...translations[index] } : app,
+  );
+  const visible =
+    filter === "all" ? apps : apps.filter((app) => app.type === filter);
+  return (
+    <section className="section projects-section" id="apps">
+      <div className="section-heading">
+        <span className="section-index">
+          01 / {language === "tr" ? "PROJE ARŞİVİ" : "PROJECT ARCHIVE"}
+        </span>
+        <a
+          className="text-link"
+          href="https://github.com/donnerzeus?tab=repositories"
+          target="_blank"
+          rel="noreferrer"
+        >
+          {t.apps.repositories}
+          <ArrowUpRight size={18} />
+        </a>
+      </div>
+      <div className="projects-intro">
+        <h2>
+          {language === "tr" ? "Uygulamalar" : "Apps"}
+          <br />
+          <em>{language === "tr" ? "& oyunlar." : "& games."}</em>
+        </h2>
+        <p>{t.apps.intro}</p>
+      </div>
+      <div
+        className="project-filters"
+        aria-label={language === "tr" ? "Proje filtreleri" : "Project filters"}
+      >
+        {Object.entries(t.apps.filters).map(([id, label]) => (
+          <button
+            type="button"
+            key={id}
+            aria-pressed={filter === id}
+            onClick={() => setFilter(id)}
+            className={filter === id ? "active" : ""}
+          >
+            {label}
+            <sup>
+              {id === "all"
+                ? apps.length
+                : apps.filter((app) => app.type === id).length}
+            </sup>
+          </button>
+        ))}
+      </div>
+      <div className="project-grid" aria-live="polite" aria-atomic="true">
+        {visible.map((app) => (
+          <article className="project-card" key={app.title}>
+            <a
+              href={app.liveUrl || app.repoUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="art-link"
+              aria-label={`${app.title} — ${app.liveUrl ? t.apps.open : t.apps.source}`}
+            >
+              <ProductArtwork app={app} />
+              <span className="project-arrow">
+                <ArrowUpRight />
+              </span>
+            </a>
+            <div className="project-meta">
+              <span>{app.category}</span>
+              <span>
+                <i
+                  className={
+                    app.liveUrl ? "status-dot" : "status-dot muted-dot"
+                  }
+                />
+                {app.status}
+              </span>
+            </div>
+            <h3>{app.title}</h3>
+            <p>{app.description}</p>
+            <div className="project-card-footer">
+              <span>{app.tech.join(" / ")}</span>
+              <a
+                href={app.repoUrl}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`${app.title} — ${t.apps.source}`}
+              >
+                <Code2 size={15} />
+                {t.apps.source}
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
