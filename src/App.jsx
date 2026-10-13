@@ -1,29 +1,30 @@
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Apps from './components/Apps';
-import About from './components/About';
-import Skills from './components/Skills';
-import TechMarquee from './components/TechMarquee';
-import Experience from './components/Experience';
-import Contact from './components/Contact';
-import './App.css';
-import './light-theme.css';
+import { MotionConfig } from "framer-motion";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import Apps from "./components/Apps";
+import About from "./components/About";
+import Experience from "./components/Experience";
+import Contact from "./components/Contact";
+import { useLanguage } from "./i18n";
+import "./App.css";
 
-function App() {
+export default function App() {
+  const { language } = useLanguage();
   return (
-    <div className="app">
-      <Navbar />
-      <main className="site-shell">
-        <Hero />
-        <About />
-        <Skills />
-        <TechMarquee />
-        <Experience />
-        <Apps />
-        <Contact />
-      </main>
-    </div>
+    <MotionConfig reducedMotion="user">
+      <a className="skip-link" href="#main">
+        {language === "tr" ? "İçeriğe geç" : "Skip to content"}
+      </a>
+      <div className="app">
+        <Navbar />
+        <main id="main">
+          <Hero />
+          <Apps />
+          <About />
+          <Experience />
+          <Contact />
+        </main>
+      </div>
+    </MotionConfig>
   );
 }
-
-export default App;

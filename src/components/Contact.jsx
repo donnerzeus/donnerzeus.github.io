@@ -1,116 +1,73 @@
-import React from 'react';
-import { motion as Motion } from 'framer-motion';
-import { FileText, Github, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
-import { collaborationPoints, footerLinks, personalInfo } from '../data';
-import { useLanguage } from '../i18n';
-import './Contact.css';
-
-const Contact = () => {
-    const { t, localize } = useLanguage();
-    const info = localize('personalInfo', personalInfo);
-    const collaborations = localize('collaborationPoints', collaborationPoints);
-
-    return (
-        <section id="contact" className="section contact-section">
-            <div className="container">
-                <Motion.h2
-                    className="section-title"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                >
-                    {t.contact.title}
-                </Motion.h2>
-
-                <div className="contact-content">
-                    <Motion.div
-                        className="contact-info"
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                    >
-                        <p className="contact-text">
-                            {t.contact.intro}
-                        </p>
-
-                        <div className="contact-details">
-                            <a href={`mailto:${info.email}`} className="contact-item">
-                                <Mail className="icon" />
-                                <span>{info.email}</span>
-                            </a>
-                            <a href={`tel:${info.phone}`} className="contact-item">
-                                <Phone className="icon" />
-                                <span>{info.phone}</span>
-                            </a>
-                            <div className="contact-item">
-                                <MapPin className="icon" />
-                                <span>{info.location}</span>
-                            </div>
-                        </div>
-
-                        <div className="contact-actions">
-                            <a
-                                href={info.resumeUrl}
-                                className="btn btn-primary"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <FileText size={18} />
-                                {t.contact.resume}
-                            </a>
-                            <a
-                                href={info.linkedin}
-                                className="btn btn-outline"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <Linkedin size={18} />
-                                LinkedIn
-                            </a>
-                        </div>
-
-                        <div className="social-links large">
-                            <a href={info.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                                <Linkedin size={28} />
-                            </a>
-                            <a href={info.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                                <Github size={28} />
-                            </a>
-                        </div>
-                    </Motion.div>
-
-                    <Motion.div
-                        className="references"
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
-                    >
-                        <h3>{t.contact.fit}</h3>
-                        <div className="references-list">
-                            {collaborations.map((item) => (
-                                <div key={item} className="reference-card">
-                                    <h4>{item}</h4>
-                                    <p className="ref-role">{t.contact.fitNote}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </Motion.div>
-                </div>
-
-                <footer className="footer">
-                    <p>{t.contact.built} · {info.name}</p>
-                    <div className="footer-links">
-                        {footerLinks.map((item) => (
-                            <a key={item.label} href={item.href} target="_blank" rel="noopener noreferrer">
-                                {item.label}
-                            </a>
-                        ))}
-                    </div>
-                </footer>
-            </div>
-        </section>
-    );
-};
-
-export default Contact;
+import { ArrowUpRight, ArrowUp } from "lucide-react";
+import { personalInfo, collaborationPoints } from "../data";
+import { useLanguage } from "../i18n";
+export default function Contact() {
+  const { language, t, localize } = useLanguage();
+  const info = localize("personalInfo", personalInfo);
+  const collaborations = localize("collaborationPoints", collaborationPoints);
+  return (
+    <section className="contact-section" id="contact">
+      <div className="section-heading">
+        <span className="section-index">
+          04 / {t.nav.contact.toLocaleUpperCase(language)}
+        </span>
+        <span>✳</span>
+      </div>
+      <div className="contact-heading">
+        <h2>
+          {language === "tr" ? "İletişime" : "Get in"}
+          <br />
+          <em>{language === "tr" ? "geçelim." : "touch."}</em>
+        </h2>
+        <a
+          className="contact-circle"
+          href={`mailto:${info.email}`}
+          aria-label={language === "tr" ? "E-posta gönder" : "Send an email"}
+        >
+          <ArrowUpRight strokeWidth={1} />
+        </a>
+      </div>
+      <div className="contact-bottom">
+        <div>
+          <p>
+            {language === "tr"
+              ? "Projen hakkında konuşabiliriz."
+              : "Let’s talk about your project."}
+          </p>
+          <a className="email-link" href={`mailto:${info.email}`}>
+            {info.email}
+            <ArrowUpRight size={20} />
+          </a>
+          <a className="phone-link" href={`tel:${info.phone}`}>
+            {info.phone}
+          </a>
+        </div>
+        <div className="collaboration-list">
+          {collaborations.map((item) => (
+            <span key={item}>{item}</span>
+          ))}
+        </div>
+      </div>
+      <footer>
+        <span>© {new Date().getFullYear()} Barış Delikaya</span>
+        <div>
+          <a href={info.github} target="_blank" rel="noreferrer">
+            GitHub
+            <ArrowUpRight size={14} />
+          </a>
+          <a href={info.linkedin} target="_blank" rel="noreferrer">
+            LinkedIn
+            <ArrowUpRight size={14} />
+          </a>
+          <a href="./privacy.html">
+            {language === "tr" ? "Gizlilik" : "Privacy"}
+          </a>
+        </div>
+        <a href="#top">
+          {language === "tr" ? "Yukarı" : "Back to top"}
+          <ArrowUp size={16} />
+        </a>
+      </footer>
+    </section>
+  );
+}

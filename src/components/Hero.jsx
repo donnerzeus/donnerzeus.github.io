@@ -1,94 +1,95 @@
-import React from 'react';
-import { motion as Motion } from 'framer-motion';
-import { ArrowUpRight, FileText, Github, Linkedin, Mail } from 'lucide-react';
-import { heroHighlights, heroStats, personalInfo } from '../data';
-import { useLanguage } from '../i18n';
-import './Hero.css';
+import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { motion as Motion, useReducedMotion } from "framer-motion";
+import { personalInfo } from "../data";
+import { useLanguage } from "../i18n";
 
-const Hero = () => {
-    const { t, localize } = useLanguage();
-    const info = localize('personalInfo', personalInfo);
-    const stats = localize('heroStats', heroStats);
-    const highlights = localize('heroHighlights', heroHighlights);
-
-    return (
-        <section className="hero-section">
-            <div className="container hero-container">
-                <Motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="hero-content"
-                >
-                    <span className="hero-kicker">{t.hero.kicker}</span>
-                    <h1 className="name">{info.name}</h1>
-                    <h2 className="title">{info.title}</h2>
-                    <p className="description">{info.summary}</p>
-
-                    <div className="hero-highlights">
-                        {highlights.map((item) => (
-                            <span key={item} className="highlight-pill">{item}</span>
-                        ))}
-                    </div>
-
-                    <div className="hero-actions">
-                        <a href="#apps" className="btn btn-primary">
-                            {t.hero.apps}
-                            <ArrowUpRight size={18} />
-                        </a>
-                        <a
-                            href={info.resumeUrl}
-                            className="btn btn-outline"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <FileText size={18} />
-                            {t.hero.resume}
-                        </a>
-                    </div>
-
-                    <div className="social-links">
-                        <a href={info.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                            <Linkedin size={22} />
-                        </a>
-                        <a href={`mailto:${info.email}`} aria-label="Email">
-                            <Mail size={22} />
-                        </a>
-                        <a href={info.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                            <Github size={22} />
-                        </a>
-                    </div>
-                </Motion.div>
-
-                <Motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                    className="hero-visual"
-                >
-                    <div className="hero-panel">
-                        <span className="hero-panel-label">{t.hero.brief}</span>
-                        <p className="hero-panel-quote">
-                            {t.hero.quote}
-                        </p>
-                        <div className="hero-stat-list">
-                            {stats.map((item) => (
-                                <div key={item.label} className="hero-stat-card">
-                                    <strong>{item.value}</strong>
-                                    <span>{item.label}</span>
-                                </div>
-                            ))}
-                        </div>
-
-                        <div className="hero-panel-footer">
-                            <span>{t.hero.current}</span>
-                            <p>{info.intro}</p>
-                        </div>
-                    </div>
-                </Motion.div>
-            </div>
-        </section>
-    );
-};
-
-export default Hero;
+function Orbital() {
+  return (
+    <div className="orbital-art" aria-hidden="true">
+      <div className="orbit-grid" />
+      <div className="orbit-halo" />
+      <div className="orbit-system">
+        <div className="orbit orbit-one" />
+        <div className="orbit orbit-two" />
+        <div className="orbit orbit-three" />
+        <div className="orbit-core">
+          <span />
+        </div>
+        <div className="satellite" />
+      </div>
+      <span className="art-coordinate coordinate-top">BD—001 / PORTFOLIO</span>
+      <span className="art-coordinate coordinate-bottom">
+        41°00′ N · 28°58′ E
+      </span>
+      <span className="art-cross cross-one">+</span>
+      <span className="art-cross cross-two">+</span>
+    </div>
+  );
+}
+export default function Hero() {
+  const { language, t } = useLanguage();
+  const tr = language === "tr";
+  const reduceMotion = useReducedMotion();
+  return (
+    <section className="hero" id="top">
+      <div className="hero-topline">
+        <span>
+          <i className="status-dot" />
+          {tr
+            ? "BARİŞ DELİKAYA · YAZILIM GELİŞTİRİCİ"
+            : "BARIŞ DELİKAYA · SOFTWARE ENGINEER"}
+        </span>
+        <span>
+          {tr ? "İSTANBUL, TÜRKİYE" : "ISTANBUL, TURKEY"}{" "}
+          <span className="small-star">✳</span>
+        </span>
+      </div>
+      <div className="hero-stage">
+        <Orbital />
+        <Motion.div
+          className="hero-heading"
+          initial={reduceMotion ? false : { opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <p className="eyebrow">
+            {tr
+              ? "BACKEND ODAKLI FULL-STACK GELİŞTİRİCİ"
+              : "BACKEND-FIRST FULL-STACK ENGINEER"}
+          </p>
+          <h1>
+            Barış
+            <br />
+            <em>
+              Delikaya<span className="orange-period">.</span>
+            </em>
+          </h1>
+          <div className="hero-bottom-copy">
+            <p>
+              {tr
+                ? "Laravel, Drupal ve kurumsal entegrasyonlar üzerine çalışıyorum. Burada geliştirdiğim uygulamaları ve oyunları bulabilirsin."
+                : "I work with Laravel, Drupal, and enterprise integrations. Here you’ll find the apps and games I build."}
+            </p>
+            <a className="circle-link" href="#apps" aria-label={t.hero.apps}>
+              <ArrowDown size={25} />
+            </a>
+          </div>
+        </Motion.div>
+        <div className="hero-art-caption">
+          <span>01 / {tr ? "BARİŞ DELİKAYA" : "BARIŞ DELİKAYA"}</span>
+          <p>
+            {tr
+              ? "Yazılım geliştirici · İstanbul"
+              : "Software engineer · Istanbul"}
+          </p>
+        </div>
+      </div>
+      <div className="hero-footer">
+        <span>PHP / LARAVEL / DRUPAL / REACT</span>
+        <a href={personalInfo.github} target="_blank" rel="noreferrer">
+          {tr ? "GITHUB PROFİLİ" : "GITHUB PROFILE"} <ArrowUpRight size={16} />
+        </a>
+      </div>
+    </section>
+  );
+}

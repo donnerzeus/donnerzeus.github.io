@@ -16,7 +16,7 @@ const copy = {
     apps: {
       eyebrow: 'Products, experiments, and playable systems',
       title: 'Apps I actually ship.',
-      intro: 'A living shelf of tools, games, and operational systems—from focused local-first PWAs to real-time multiplayer experiments and enterprise platform work.',
+      intro: 'Apps, browser games, and internal tools I’ve built. Explore a live project or take a look at the code.',
       repositories: 'All repositories',
       filters: { all: 'All builds', live: 'Live apps', game: 'Games', system: 'Systems' },
       open: 'Open app',
@@ -56,7 +56,7 @@ const copy = {
     apps: {
       eyebrow: 'Ürünler, deneyler ve oynanabilir sistemler',
       title: 'Yayına aldığım uygulamalar.',
-      intro: 'Yerel çalışan odaklı PWA’lardan gerçek zamanlı çok oyunculu deneylere ve kurumsal platformlara uzanan güncel ürün arşivim.',
+      intro: 'Geliştirdiğim uygulamalar, tarayıcı oyunları ve iş araçları. Canlı projeleri deneyebilir veya kaynak kodlarına bakabilirsin.',
       repositories: 'Tüm repolar',
       filters: { all: 'Tüm projeler', live: 'Canlı uygulamalar', game: 'Oyunlar', system: 'Sistemler' },
       open: 'Uygulamayı aç',
